@@ -33,12 +33,12 @@ def call():
 def __init__(self):
     self.kakao = Kakao()
     
-  if __name__ == "__main__":
-    driver = webdriver.Chrome('./chromedriver')
-    url = 'https://www.freitag.ch/en/f304-moss'
-    driver.get(url)
-    driver.find_element_by_css_selector('body > div:nth-child(6) > div > div > div:nth-child(3) > a').click()
+    if __name__ == "__main__":
+      driver = webdriver.Chrome('./chromedriver')
+      url = 'https://www.freitag.ch/en/f304-moss'
+      driver.get(url)
+      driver.find_element_by_css_selector('body > div:nth-child(6) > div > div > div:nth-child(3) > a').click()
 
 
-    curr_items = []
-    call()
+      curr_items = []
+      call()
