@@ -3,7 +3,7 @@ import requests
 
 from selenium import webdriver
 
-from kakao import* 
+from base import kakao
 
 def get_new_items():
     driver.refresh()
@@ -30,15 +30,17 @@ def call():
     else:
         print('Nothing New')
 
-def __init__(self):
-    self.kakao = Kakao()
-    
-    if __name__ == "__main__":
-      driver = webdriver.Chrome('./chromedriver')
-      url = 'https://www.freitag.ch/en/f304-moss'
-      driver.get(url)
-      driver.find_element_by_css_selector('body > div:nth-child(6) > div > div > div:nth-child(3) > a').click()
+def main():
+    print('hi')
 
+    driver = webdriver.Chrome('./chromedriver.exe')
+    driver.implicitly_wait(3)
+    url = 'https://www.freitag.ch/en/f304-moss'
+    driver.get(url)
+    driver.find_element_by_css_selector('body > div:nth-child(6) > div > div > div:nth-child(3) > a').click()
 
-      curr_items = []
-      call()
+    curr_items = []
+    call()
+
+if __name__ == "__main__":
+    main()
