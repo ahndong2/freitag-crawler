@@ -3,7 +3,7 @@ import requests
 
 from selenium import webdriver
 
-from kakao import*
+from kakao import '/base/kakao.py'
 
 def get_new_items():
     driver.refresh()
@@ -33,7 +33,7 @@ def call():
 def __init__(self):
     self.kakao = Kakao()
     
-if __name__ == "__main__":
+  if __name__ == "__main__":
     driver = webdriver.Chrome('./chromedriver')
     url = 'https://www.freitag.ch/en/f304-moss'
     driver.get(url)
