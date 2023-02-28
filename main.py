@@ -3,7 +3,7 @@ import requests
 
 from selenium import webdriver
 
-from kakao import '/base/kakao.py'
+from kakao import* 
 
 def get_new_items():
     driver.refresh()
