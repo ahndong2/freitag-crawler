@@ -3,13 +3,13 @@ import json
 
 class Kakao():
   def __init__(self):
-      self.app_key = "cf10bb8dd2b330bddc0d7494b8be4d07" ## REST API 키 입력 
+    self.app_key = "cf10bb8dd2b330bddc0d7494b8be4d07" ## REST API 키 입력 
 
   # 저장 된 json 파일 읽어오기
-  with open("kakao_token.json", "r") as fp:
-  self.tokens = json.load(fp)
+    with open("kakao_token.json", "r") as fp:
+        self.tokens = json.load(fp)
 
-  self.refresh_token()
+        self.refresh_token()
 
 
 
