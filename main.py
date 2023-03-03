@@ -6,12 +6,11 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 
+from base import kakao
+from proxy_randomizer import RegisteredProviders
+from fake_headers import Headers
 from user_agent import generate_user_agent
 
-from base import kakao
-from randomproxy import *
-
-driver = webdriver.Chrome(chrome_options=options)  
 def get_new_items():
     driver.refresh()
     try:
@@ -37,14 +36,28 @@ def call():
     else:
         print("Nothing New")
 
+def proxy_create():
+    rp = RegisteredProviders()
+    rp.parse_providers()
+    proxy = rp.get_random_proxy()
+    return proxy
+
 def main():    
     options = webdriver.ChromeOptions()
-    userAgent = generate_user_agent(os='win', device_type='desktop')
-    options.add_argument('--proxy-server=IP_ADDRESS:PORT')
-    options.add_argument('user-agent='+ userAgent)
-    options.add_argument("--incognito")
+    # userAgent = generate_user_agent(os='win', device_type='desktop')
     
-    driver = webdriver.Chrome("./chromedriver.exe", options=options)
+    rproxy = proxy_create()
+    header = Headers(
+                    browser="chrome",  # Generate only Chrome UA
+                    os="win",  # Generate ony Windows platform
+                    headers=True  # generate misc headers
+                )
+    headers = header.generate()
+    proxies = 'http://%s' % self.proxy
+    options.add_argument('--proxy-server=%s' % rproxy)
+    options.add_argument("--incognito")
+    # driver = webdriver.Chrome(chrome_options=options)
+    driver = webdriver.Chrome("./chromedriver.exe", options=options, headers=headers, proxies=proxies)
     driver.implicitly_wait(10)
     url = "https://www.freitag.ch/en/f304-moss"
     

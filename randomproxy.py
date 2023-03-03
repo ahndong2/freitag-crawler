@@ -1,5 +1,5 @@
-from http_request_randomizer.requests.proxy.requestProxy import RequestProxy
 from fake_headers import Headers
+from proxy_randomizer import RegisteredProviders
 import requests
 
 class RANDOM_PROXY:
@@ -9,24 +9,10 @@ class RANDOM_PROXY:
       # self.crawling()
 
     def proxy_create(self):
-        self.req_proxy = RequestProxy()
-        proxy = self.test_proxy() # 잘 작동되는 프록시 선별
+        rp = RegisteredProviders()
+        rp.parse_providers()
+        proxy = rp.get_random_proxy()
         return proxy
-
-    def test_proxy(self):
-        test_url = 'http://ipv4.icanhazip.com' 
-        while True: # 제대로된 프록시가 나올때까지 무한반복 
-            requests = self.req_proxy.generate_proxied_request(test_url)
-
-            if requests is not None:
-                print("\t Response: ip={0}".format(u''.join(requests.text).encode('utf-8')))
-                proxy = self.req_proxy.current_proxy
-                break
-
-            else:
-                continue
-                
-        return proxy # 잘작동된 proxy를 뽑아준다. 
         
     def crawling(self, url):
        header = Headers(
@@ -44,4 +30,5 @@ class RANDOM_PROXY:
        # get 인자에 프록시와 헤더를 넣어주면 끝.
        
     if __name__ == "__main__":
+        print('dddddddddddddddddddddd')
         RANDOM_PROXY()

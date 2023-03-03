@@ -1,5 +1,5 @@
 requests
 selenium
 user-agent
-http_request_randomizer
 fake_headers
+proxy_randomizer
