@@ -3,3 +3,4 @@ selenium
 user-agent
 fake_headers
 proxy_randomizer
+webdriver-manager
